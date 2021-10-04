@@ -1,3 +1,1 @@
-# ctfcup21
-
-Tasks and services
+# ctfcup-21-quals
