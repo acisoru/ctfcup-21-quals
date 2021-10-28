@@ -52,4 +52,4 @@ ELF 64bit, C
 
 ## Флаг
 
-`CUP{8ee5dfeea690b580f46239c4496873c8}`
+`CUP{69dc8553bac9f6cd9665ddfd6d62e3c2}`
