@@ -1,7 +1,7 @@
 version: '2.2'
 
 services:
-    babyheap:
+    mnogoetazhka-v1:
         build: service
         restart: on-failure
         ports:
