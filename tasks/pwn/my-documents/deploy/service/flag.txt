@@ -1,0 +1,2 @@
+Nice try, but the flag is on the second line 
+CUP{dc942bbae1e5a923ad7a1831d3e7040b}
