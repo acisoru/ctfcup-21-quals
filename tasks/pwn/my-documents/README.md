@@ -18,7 +18,7 @@ docker-compose up --build -d
 
 ## Выдать участинкам
 
-Архив из директории [public/](public/)
+Архив из директории [public/](public/) и IP:PORT сервера
 
 ## Описание
 
