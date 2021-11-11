@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}PSearch - Stats{% endblock %}
+{% block content %}
+
+<div class="ui text container">
+    <h1 class="ui header">Welcome to your stats, {{username}}</h1>
+</div>
+<br>
+
+<div class="ui text container">
+    <h1 class="ui header">Top platforms:</h1>
+    <div class="ui one column grid">
+        <div class="column">
+            <ol>
+                {% for pls in platformstats %}
+                <li>{{pls['plt']}} — {{pls['cnt']}}</li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="ui text container">
+    <h1 class="ui header">Top IPs:</h1>
+    <div class="ui one column grid">
+        <div class="column">
+            <ol>
+                {% for pls in ipstats %}
+                <li>{{pls['fip']}} — {{pls['cnt']}}</li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="ui text container">
+    <h1 class="ui header">Top Queries:</h1>
+    <div class="ui one column grid">
+        <div class="column">
+            <ol>
+                {% for q in top_q %}
+                <li>"{{q['query']}}" — {{q['cnt']}}</li>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+

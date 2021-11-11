@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}PSearch - Home{% endblock %}
+{% block content %}
+<div class="ui text container">
+    <h1 class="ui header">Home page!</h1>
+    <div class="ui one column grid">
+        <div class="column">
+            <div class="ui message">
+                <h3 class="ui header">Welcome to your private search, {{username}}</h3>
+
+                <p>You can search your documents <a href="/search/{{u_id}}?token={{tok}}">here</a> (link is sharable)
+                </p>
+                <p>You can check your search stats <a href="/stats">here</a> (link is NOT sharable)
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="ui text container">
+    <h3 class="ui header">Add new document!</h3>
+    <form class="ui form" method="post" action="/document">
+        <div class="field">
+            <label>Title</label>
+            <input type="text" required name="title" placeholder="Awesome doc!">
+        </div>
+        <div class="field">
+            <label>Text</label>
+            <textarea required name="text" placeholder=""></textarea>
+        </div>
+        <button class="ui button" type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}
+
