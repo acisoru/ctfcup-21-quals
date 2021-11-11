@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="container">
+    <h4>Domain: <a href="/domain/{{domain}}">{{domain}}</a></h4>
+    <h4>Settings: "{{setting}}"</h4>
+
+</div>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Key</th>
+            <th scope="col">Value</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for pair in pairs %}
+        <tr>
+            <th scope="row">{{pair[0]}}</th>
+            <td>{{pair[1]}}</td>
+            <td>
+                <a type="button" href="/settings/{{domain}}/{{setting}}/{{pair[0]}}/delete" class="btn btn-danger">
+                    Delete
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<br>
+
+<div class="container">
+    <h5>Add pair:</h5>
+    <form method="post" action="">
+        <label>
+            Key:
+            <input type="text" name="k">
+        </label>
+        <label>
+            Value:
+            <input type="text" name="v">
+        </label>
+        <input type="submit" value="Add">
+    </form>
+    <br>
+
+</div>
+
+<div class="container">
+    <h4><a href="/api/settings/{{domain}}/{{setting}}">JSON Endpoint (useful for API)</a></h4>
+</div>
+
+
+{% endblock %}
