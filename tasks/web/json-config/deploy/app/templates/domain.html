@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block main %}
+<h3>Domain: {{domain}}</h3>
+<h3>Available settings:</h3>
+<ul class="list-group">
+    {% for setting_name in settings %}
+    <li class="list-group-item"><a href="/settings/{{domain}}/{{setting_name}}">{{setting_name}}</a></li>
+    {% endfor %}
+</ul>
+
+<div class="container">
+    <form method="post" action="">
+        <label>
+            New setting:
+            <input type="text" name="setting">
+        </label>
+        <input type="submit" value="Add new setting">
+    </form>
+    <form method="post" action="/domain/{{domain}}/flush">
+        <input type="submit" value="Flush the setting">
+    </form>
+     <form method="post" action="/domain/{{domain}}/dump">
+        <input type="submit" value="Dump settings into the JSON file">
+    </form>
+</div>
+{% endblock %}

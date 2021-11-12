@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}PSearch - Search{% endblock %}
+{% block content %}
+
+<div class="ui text container">
+    <h3 class="ui header">Find something!</h3>
+    <form class="ui form" method="get" action="">
+        <div class="ui icon input">
+            <input class="prompt" type="text" placeholder="Wow?" name="q">
+            <i class="search icon"></i>
+        </div>
+        <input type="hidden" name="token" value="{{token}}">
+        <button class="ui button" type="submit">Submit</button>
+    </form>
+</div>
+
+<br>
+<br>
+
+
+<div class="ui text container">
+    <h3 class="ui header">Search results!</h3>
+
+    {% for match in matches %}
+    <div class="ui message">
+        <div class="header">
+            {{match.title}}
+        </div>
+        <p>{{match.body}}</p>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,26 @@
+version: '2.4'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: go.Dockerfile
+    depends_on:
+      - chrome
+    networks:
+      - pdfer
+    ports:
+    - "3334:3333"
+    pids_limit: 256
+    mem_limit: 512m
+    cpus: 0.5
+  chrome:
+    build:
+      context: .
+      dockerfile: chrome.Dockerfile
+    pids_limit: 512
+    mem_limit: 1024m
+    cpus: 1
+    networks:
+      - pdfer
+networks:
+  pdfer:
