@@ -123,7 +123,7 @@ def zip_dir(out_file, dir):
         log = x.decode()
     except Exception as e:
         log = str(e)
-    shutil.rmtree(dir, ignore_errors=True)
+    shutil.rmtree(dir)
 
     _, out_file = os.path.split(out_file)
     return {'out': out_file, 'log': log}

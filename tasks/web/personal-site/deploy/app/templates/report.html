@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Report{% endblock %}
+
+{% block main %}
+    <h2>Your are going to report the page: {{ uuid }}</h2>
+    <br>
+
+
+    <form action='' method='post'>
+        <input type="hidden" value="{{ uuid }}" name="uuid">
+        <select class="form-select" aria-label="Default select example" name="why">
+            <option value="violence">Violence</option>
+            <option value="drugs">Drugs</option>
+            <option value="ucucuga">Ucucuga</option>
+        </select>
+        <input type='submit' value='Submit' class='btn btn-primary'>
+    </form>
+
+{% endblock %}
