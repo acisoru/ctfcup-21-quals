@@ -1,0 +1,12 @@
+
+
+{% extends "base.html" %}
+{% block title %}{{ author|safe }}{% endblock %}
+
+{% block main %}
+    <h3>Info: </h3>
+    <div>
+        {{ info.text }}
+    </div>
+    <a href="/report/{{ info.uuid }}">Report to admin (admin will see exactly this page)!</a>
+{% endblock %}

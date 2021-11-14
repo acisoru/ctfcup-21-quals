@@ -1,0 +1,32 @@
+
+
+{% extends "base.html" %}
+{% block title %}Info{% endblock %}
+
+{% block main %}
+    <h2>Your info: </h2>
+    <br>
+
+    {% if info %}
+        <div class="card">
+            <div class="card-body">
+                <p>"{{ info.text }}"</p>
+                <p><a href="/share/{{ info.uuid }}">Give a link to your info!</a></p>
+            </div>
+        </div>
+    {% else %}
+        <h3>No info added</h3>
+    {% endif %}
+
+
+    <form action='' method='post'>
+        <div class='form-group'>
+            <label for='id_text'>Text:</label>
+            <input type='text' name='text' id='id_text' class='form-control'>
+        </div>
+        <input type='submit' value='Send!' class='btn btn-primary'>
+    </form>
+
+{% endblock %}
+© 2021 GitHub, Inc.
+Terms
