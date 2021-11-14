@@ -1,0 +1,56 @@
+mov [gp+0x10], r11
+mov [gp+0x18], r12
+mov [gp+0x20], r13
+mov [gp+0x28], r14
+push 0xdeadbeefcafebabe
+push 0xdeadc0debaadf00d
+push r10
+push r11
+push r12
+push r13
+push r14
+push r15
+push r16
+push r17
+push r18
+push r19
+# r15 is WSAStartup
+mov r22, r15
+mov r10, 0x0202
+mov r11, gp
+add r11, 0x200
+native r11
+excall2 r22
+# r16 is socket
+mov r22, r16
+mov r10, 0x2
+mov r11, r10
+mov r12, 0x11
+excall3 r22
+mov r22, r18
+mov r88, ac
+mov r10, r88
+mov r13, 0x0
+mov r15, 0x10
+mov r14, gp
+add r14, 0x100
+native r14
+mov r11, gp
+native r11
+mov r12, 0x30
+# send data
+excall6 r22
+mov [gp+0x30], [gp+0x100]
+mov [gp+0x38], [gp+0x108]
+mov [gp+0x40], r10
+pop r19
+pop r18
+pop r17
+pop r16 
+pop r15
+pop r14
+pop r13
+pop r12
+pop r11
+pop r10
+exit

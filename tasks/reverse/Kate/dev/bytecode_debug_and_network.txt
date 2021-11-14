@@ -1,0 +1,107 @@
+# this byte code check debugger and finded network functions
+# if debugger is attached, then this code return incorrect 4 64-bit values
+# pc is r0
+# ac is r1
+# sp is r2
+# gp is r3
+# excall0 Ra; args is: r10, r11, r12, r13, r14, r15, r16, r17
+# call IsDebuggerPresent function, 0x8436f795
+# kate.exe : 0x8cb50f93
+# ntdll.dll : 0x26797e77
+# kernel32.dll : 0x2eca438c
+# ws2_32.dll : 0xcd0ad72e
+# advapi32.dll : 0x929b1529
+# set IsDebuggerPresent crc32 in r5
+push pc
+xor ac, ac
+xor ac, 0x5deae857e370a05d
+xor ac, 0xab236b12ea5bbc96
+xor ac, 0xf6c983458d1deb5e
+mov r5, ac
+# set kernel32.dll crc in r6
+xor ac, ac
+xor ac, 0x3470549fba3ee1c9
+xor ac, 0x8d7365064e721f7a
+xor ac, 0xb9033199da86bd3f
+mov r6, ac
+find r6, r5
+mov r8, ac
+excall0 r8
+cmp ac, 0x1
+mov r44, pc
+add r44, 0x1a
+mov r45, r44
+add r45, 0x70
+jmpeq r44
+jmpne r45
+xor r11, r11
+xor r12, r12
+xor r13, r13
+xor r14, r14
+add r11, 0x99f959b33fd9cfe3
+xor r11, 0x74598fc9f73e3043
+add r12, 0x2b20af03591b304d
+xor r12, 0xc9e040ea0862302c
+add r13, 0x59869b1a1f5f7f6d
+xor r13, 0x7b204385125993a7
+add r14, 0x0b46f85c0a35d906
+xor r14, 0x4a3fb8290d3982e3
+# make cycle if IsDebuggerPresent return true
+xor ac, ac
+# ws2_32.dll : 0xcd0ad72e
+# WSAStartup : 0xa0f5fc93
+# socket : 0x5e568bb
+# connect : 0x74cff91f
+# sendto : 0x6fdf0506
+# closesocket : 0xa5c6d777
+xor r11, 0xe5829fb3efa4a50d
+xor r12, 0x51db324eae8b8e74
+xor r13, 0x26133be822eddc1d
+xor r14, 0x3677dfb1ee1875a9
+# set 0xcd0ad72e to r6 (ws2_32 crc)
+xor ac, ac
+xor ac, 0xb71972153ddd40f
+xor ac, 0xf4f2b3e0664d3717
+xor ac, 0xff8324c1f89a3436
+mov r6, ac
+xor ac, ac
+xor ac, 0xb92869f821edfb7
+xor ac, 0x420822f0802e9b2a
+xor ac, 0x499aa46fa2c5b80e
+mov r5, ac
+find r6, r5
+mov r20, ac
+xor ac, ac
+xor ac, 0x4a6a3dc6d42a4616
+xor ac, 0xb01f513b3e69f52e
+xor ac, 0xfa756cfdefa6db83
+mov r5, ac
+find r6, r5
+mov r21, ac
+xor ac, ac
+xor ac, 0x971e990e85c6ffac
+xor ac, 0xb44fc03ba69fb946
+xor ac, 0x235159355796bff5
+mov r5, ac
+find r6, r5
+mov r22, ac
+xor ac, ac
+xor ac, 0xb339ee88e06e2bf3
+xor ac, 0x74b5a64fe31fd265
+xor ac, 0xc78c48c76caefc90
+mov r5, ac
+find r6, r5
+mov r23, ac
+xor ac, ac
+xor ac, 0xdd34be49dcd1ae3b
+xor ac, 0xa0604a9b9c07d8e7
+xor ac, 0x7d54f4d2e510a1ab
+mov r5, ac
+find r6, r5
+mov r24, ac
+mov r15, r20
+mov r16, r21
+mov r17, r22
+mov r18, r23
+mov r19, r24
+exit

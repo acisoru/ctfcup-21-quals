@@ -1,0 +1,109 @@
+# advapi32.dll : 0x929b1529
+# GetUserNameA : 0x59761a93
+# LookupAccountSidA : 0xbfe344b9
+push 0xdeadbeefcafebabe
+push 0xdeadc00debadf00d
+push r10
+push r11
+push r12
+push r13
+push r14
+push r15
+push r16
+push r17
+push r18
+push r19
+xor ac, ac
+xor ac, 0xa465366cf4128aa3
+xor ac, 0x168410c52d16e29b
+xor ac, 0xb2e126a94b9f7d11
+mov r6, ac
+xor ac, ac
+xor ac, 0xa158a39c56eb5995
+xor ac, 0x57c7400b944e4918
+xor ac, 0xf69fe3979bd30a1e
+mov r5, ac
+# find GetUsernameA
+find r6, r5
+mov r21, ac
+mov r10, gp
+mov r11, r10
+add r11, 0x100
+native r10
+native r11
+excall2 r21
+xor ac, ac
+xor ac, 0x7f08596473ff873
+xor ac, 0x3f1e27866885b640
+xor ac, 0x38eea210ed9c9921
+mov r5, ac
+# find LookupAccountNameA
+find r6, r5
+mov r22, ac
+# set r10 to null
+xor r10, r10
+# set r11 to username pointer
+xor r11, r11
+mov r11, gp
+native r11
+# set r12 to null
+xor r12, r12
+# set r13 to free space
+mov r13, gp
+add r13, 0x80
+native r13
+# set r14 to null
+xor r14, r14
+# set r15 
+mov r15, gp
+add r15, 0x110
+native r15
+# set r16
+mov r16, gp
+add r16, 0x190
+native r16
+# call
+excall7 r22
+mov r12, gp
+add r12, 0x280
+native r12
+mov r14, gp
+add r14, 0x300
+native r14
+excall7 r22
+mov r20, gp
+add r20, 0x28c
+mov r21, [r20]
+mov r22, [r20+0x08]
+mod r22, 0x100000000
+# save SID value to gp+0x60
+mov [gp+0x60], r21
+mov [gp+0x68], r22
+pop r19
+pop r18
+pop r17
+pop r16
+pop r15
+pop r14
+pop r13
+pop r12
+pop r11
+pop r10
+xor r11, r21
+xor r12, r22
+xor r13, r21
+xor r14, r22
+# GetSystemTime : 0xd22204e4
+# kernel32.dll
+mov r10, gp
+native r10
+mov r5, 0x2eca438c
+mov r6, 0xd22204e4
+find r5, r6
+mov r33, ac
+excall1 r33
+xor r11, [gp]
+xor r12, [gp+0x8]
+xor r13, [gp]
+xor r14, [gp+0x8]
+exit
