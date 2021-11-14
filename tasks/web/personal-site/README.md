@@ -34,7 +34,7 @@ IP:PORT сервера.
 2. Вставить base-tag на свой домен.
 3. На своем домене поднять static/js/bootstrap.min.js с своим кодом.
 
-[Эксплоит](solution/sploit.py)
+[Эксплоит](solution/solve.py)
 
 ## Флаг
 
