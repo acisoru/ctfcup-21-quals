@@ -11,7 +11,7 @@ services:
     ports:
       - "3305:5321"
     # For local testing.
-    cpus: 0.5
+    cpus: 1
     pids_limit: 256
     mem_limit: 512m
     restart: unless-stopped
@@ -27,18 +27,18 @@ services:
       - redis
       - chrome
     entrypoint: "celery -A app.celery worker --time-limit 6"
-    pids_limit: 512
+    pids_limit: 1024
     mem_limit: 1024m
-    cpus: 1
+    cpus: 2
     restart: unless-stopped
 
   chrome:
     build:
       context: .
       dockerfile: chrome.Dockerfile
-    pids_limit: 512
+    pids_limit: 2048
     mem_limit: 1024m
-    cpus: 1
+    cpus: 2
 
   redis:
     image: redis:alpine

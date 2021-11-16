@@ -5,6 +5,7 @@ services:
     restart: on-failure
     mem_limit: 512m
     pids_limit: 1024
+    cpus: 1
     networks:
       - private-search
   chouse:
@@ -12,6 +13,7 @@ services:
     restart: on-failure
     mem_limit: 512m
     pids_limit: 1024
+    cpus: 1
     networks:
       - private-search
   backend:
@@ -25,6 +27,7 @@ services:
     restart: on-failure
     mem_limit: 256m
     pids_limit: 1024
+    cpus: 1
     networks:
       - private-search
   nginx:
@@ -37,6 +40,7 @@ services:
       - ./nginx/proxy_params:/etc/nginx/proxy_params
     mem_limit: 256m
     pids_limit: 1024
+    cpus: 1
     networks:
       - private-search
 volumes:

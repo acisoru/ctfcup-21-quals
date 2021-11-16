@@ -203,8 +203,9 @@ def fill_nonce():
 @app.after_request
 def fill_headers(response):
     nonce = g.nonce
-    response.headers[
-        'Content-Security-Policy'] = "script-src 'nonce-{nonce}'; style-src 'nonce-{nonce}'; object-src 'none';".format(
+    response.headers['Content-Security-Policy'] = "script-src 'nonce-{nonce}'; " \
+                                                  "style-src 'nonce-{nonce}'; " \
+                                                  "object-src 'none';".format(
         nonce=nonce)
 
     return response
