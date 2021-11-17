@@ -1,0 +1,30 @@
+_meta:
+  type: "roles"
+  config_version: 2
+
+# Restrict users so they can only view visualization and dashboard on kibana
+kibana_read_only:
+  reserved: true
+
+# The security REST API access role is used to assign specific users access to change the security settings through the REST API.
+security_rest_api_access:
+  reserved: true
+
+readall_my:
+  reserved: false
+  hidden: false
+  cluster_permissions:
+    - "read"
+    - "cluster:monitor/nodes/stats"
+    - "cluster:monitor/task/get"
+    - "cluster:monitor/main"
+    - "indices:admin/aliases/get"
+  index_permissions:
+    - index_patterns:
+        - "*"
+      allowed_actions:
+        - "indices:admin/aliases/get"
+        - "indices:admin/get"
+        - "indices:data/read/search"
+        - "indices:data/read/get"
+  static: false
