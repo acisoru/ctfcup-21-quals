@@ -4,7 +4,7 @@ services:
     links:
       - db
     ports:
-      - 5000:8000
+      - {$port}:8000
 
   db:
     build: ./db
@@ -27,15 +27,4 @@ services:
     ports:
       - 9200
 
-  initializer:
-    build: ./initializer
-    depends_on:
-      - db
-    links:
-      - db
-    environment:
-      FLAG: "{SOMESECRET}"
-      DB_HOST: "https://db"
-      WRITER_USER: "${WRITER_USER}"
-      WRITER_PASS: "${WRITER_PASS}"
 
