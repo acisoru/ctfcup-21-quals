@@ -6,22 +6,25 @@ import (
 	"html/template"
 	"io/ioutil"
 	"log"
-	"strings"
 	"net/http"
+	"strings"
 )
 
 type Page struct {
 	Title string
-	URL template.URL
+	URL   template.URL
 	Body  template.HTML
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	t, _ := template.ParseFiles("index.html")
+	w.Header().Set("Server", "go httpserver 1.11.5")
 	t.Execute(w, &Page{Title: "My simple proxy"})
 }
 
-func handlerURL(w http.ResponseWriter, r*http.Request) {
+func handlerURL(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Server", "go httpserver 1.11.5")
+
 	t, _ := template.ParseFiles("go.html")
 
 	url := r.FormValue("url")

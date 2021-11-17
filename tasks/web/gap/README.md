@@ -32,5 +32,7 @@ IP:PORT
 4. db:9200/smth_interesting/_search?pretty=true&q=*:* HTTP/1.1\nAuthorization: Basic Y3RmY3VwOmN0ZmN1cA
 5. Сдаем флаг
 
+[exploit](solution/exploit.py)
+
 # Флаг
 Придумать и установить самим
