@@ -1,0 +1,30 @@
+services:
+  proxy:
+    build: ./proxy
+    links:
+      - db
+    ports:
+      - {$port}:8000
+
+  db:
+    build: ./db
+    container_name: db
+    restart: always
+    environment:
+      - discovery.type=single-node
+      - node.name=task-node
+      - bootstrap.memory_lock=true # along with the memlock settings below, disables swapping
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m" # minimum and maximum Java heap size, recommend setting both to 50% of system RAM
+      - USER=ctfcup
+      - PASSWORD=ctfcup
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536 # maximum number of open files for the Elasticsearch user, set to at least 65536 on modern systems
+        hard: 65536
+    ports:
+      - 9200
+
+

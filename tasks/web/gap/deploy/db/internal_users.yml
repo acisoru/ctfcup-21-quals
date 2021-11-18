@@ -1,0 +1,19 @@
+---
+
+_meta:
+  type: "internalusers"
+  config_version: 2
+
+for_write:
+  hash: "$2y$12$BJkO07TUT8ycuTBnvLjqCOzfA17LUabzfIWUwtxVmS33kIAHTF7Lm"
+  reserved: false
+  backend_roles:
+    - "admin"
+  description: "CTFCUP writer"
+
+ctfcup:
+  hash: "$2y$12$lVdeYsEHriTPcvakWqeSZu1uStMuw7C3d8.uUBODpjN813lJclAgS"
+  reserved: false
+  backend_roles:
+    - "readall"
+  description: "CTFCUP user"
