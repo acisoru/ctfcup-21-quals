@@ -43,3 +43,6 @@ services:
   redis:
     image: redis:alpine
     restart: unless-stopped
+    mem_limit: 512m
+    cpus: 1
+

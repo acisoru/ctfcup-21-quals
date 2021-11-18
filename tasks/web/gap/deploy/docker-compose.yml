@@ -2,6 +2,8 @@ version: '2.4'
 services:
   proxy:
     build: ./proxy
+    mem_limit: 512m
+    cpus: 1
     ports:
       - 3300:8000
 
