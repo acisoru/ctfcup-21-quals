@@ -1,7 +1,9 @@
 FROM ubuntu:latest
 
 RUN apt-get update && apt-get dist-upgrade && apt -y install qemu-system-x86
-RUN apt-get install cpio socat python3 -yyq
+RUN apt-get install cpio socat python3 python3-pip -yyq
+
+RUN pip3 install requests
 
 RUN mkdir -p /task/fs
 RUN mkdir -p /task/kernel
