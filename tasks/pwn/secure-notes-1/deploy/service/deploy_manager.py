@@ -53,7 +53,7 @@ def sorted_ls(path):
 def remove_old_dirs():
     files = sorted_ls("/tmp/")
     for i in files:
-        os.rmdir("/tmp" + i)
+        os.rmdir(i)
 
 def main():
     # generate POW
