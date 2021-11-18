@@ -9,6 +9,13 @@ RUN mkdir -p /task/kernel
 COPY bzImage /task/kernel/
 COPY compr.sh  decompress.sh initramfs.cpio.gz  run.sh /task/fs/
 COPY deploy_manager.py /
+RUN chmod ugo+rx /deploy_manager && chmod ugo-w /deploy_manager
+RUN chmod ugo+rx /task/fs/run.sh && chmod ugo-w /task/fs/run.sh
+RUN chmod ugo+rx /task/fs/decompress.sh && chmod ugo-w /task/fs/decompress.sh
+RUN chmod ugo+rx /task/fs/compr.sh && chmod ugo-w /task/fs/compr.sh
+RUN chmod ugo+rx /task/fs/initramfs.cpio.gz && chmod ugo-w /task/fs/initramfs.cpio.gz
+RUN chmod ugo+rx /task/kernel/bzImage && chmod ugo-w /task/fs/bzImage
+
 ENV  PYTHONUNBUFFERED true
 
 WORKDIR /
