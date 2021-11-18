@@ -24,7 +24,7 @@ services:
     image: nginx:1.18.0-alpine
     restart: on-failure
     ports:
-      - "3322:80"
+      - "${SERVICE_PORT:-3322}:80"
     volumes:
       - ./nginx/app.conf:/etc/nginx/conf.d/default.conf
       - ./nginx/proxy_params:/etc/nginx/proxy_params
@@ -35,4 +35,3 @@ services:
 
 networks:
   php-challenge:
-
