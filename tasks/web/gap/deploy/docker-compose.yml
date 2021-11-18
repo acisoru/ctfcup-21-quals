@@ -1,8 +1,7 @@
+version: '2.4'
 services:
   proxy:
     build: ./proxy
-    links:
-      - db
     ports:
       - 3300:8000
 
@@ -17,6 +16,9 @@ services:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m" # minimum and maximum Java heap size, recommend setting both to 50% of system RAM
       - USER=ctfcup
       - PASSWORD=ctfcup
+    pids_limit: 2048
+    mem_limit: 1024m
+    cpus: 1
     ulimits:
       memlock:
         soft: -1
@@ -30,8 +32,6 @@ services:
   initializer:
     build: ./initializer
     depends_on:
-      - db
-    links:
       - db
     environment:
       FLAG: "CUP{b061ac18135f641c21f8f429efe4d1a47d7acc37}"
