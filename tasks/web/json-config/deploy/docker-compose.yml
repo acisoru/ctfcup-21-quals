@@ -7,7 +7,7 @@ services:
     depends_on:
       - celery
     ports:
-      - "5321:5321"
+      - "${SERVICE_PORT:-5321}:5321"
     volumes:
       - user-data:/data
     cpus: 0.5
