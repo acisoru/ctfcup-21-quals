@@ -1,6 +1,6 @@
 version: '2.4'
 services:
-  padding:
+  signature:
     build: .
     ports:
      - "1537:1537"
