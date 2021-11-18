@@ -53,11 +53,9 @@ def sorted_ls(path):
 def remove_old_dirs():
     files = sorted_ls("/tmp/")
     for i in files:
-        os.rmdir("/tmp/" + i)
+        os.rmdir("/tmp" + i)
 
 def main():
-    remove_old_dirs()
-
     # generate POW
     prefix, correct = gen_pow()
     user_answer = input("Prefix: {}\nsha256(Prefix + POW)[:6] == {}\n[?] POW: ".format(prefix, correct))
@@ -67,8 +65,7 @@ def main():
         exit(0)
 
     remove_old_dirs()
-    # TODO: make file-downloading from external-link
-    # https://paste.c-net.org/DeceitDeathbed - mem_scan_sploit
+    
     link_to_user_exploit = input("[?] Enter external-link to your exploit (e.g https://paste.c-net.org/ or other, max size: 2Mb): ").strip()
     data = download_file(link_to_user_exploit)
 
