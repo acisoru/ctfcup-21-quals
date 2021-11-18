@@ -14,7 +14,7 @@ RUN chmod ugo+rx /task/fs/run.sh && chmod ugo-w /task/fs/run.sh
 RUN chmod ugo+rx /task/fs/decompress.sh && chmod ugo-w /task/fs/decompress.sh
 RUN chmod ugo+rx /task/fs/compr.sh && chmod ugo-w /task/fs/compr.sh
 RUN chmod ugo+rx /task/fs/initramfs.cpio.gz && chmod ugo-w /task/fs/initramfs.cpio.gz
-RUN chmod ugo+rx /task/kernel/bzImage && chmod ugo-w /task/fs/bzImage
+RUN chmod ugo+rx /task/kernel/bzImage && chmod ugo-w /task/kernel/bzImage
 
 ENV  PYTHONUNBUFFERED true
 
