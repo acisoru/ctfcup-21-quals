@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block main %}
+    <h3>Dump status:
+        {% if ready %}
+            READY
+        {% else %}
+            NOT READY (pls update the page)
+        {% endif %}
+    </h3>
+
+    {% if ready %}
+        Dump log:
+        <code>
+            {{ log }}
+        </code>
+
+        <br>
+        <a href="/dumps/download/{{path}}">Download the archive</a>
+    {% endif %}
+
+{% endblock %}

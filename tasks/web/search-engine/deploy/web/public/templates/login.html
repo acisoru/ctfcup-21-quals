@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}PSearch - Login{% endblock %}
+{% block content %}
+<div class="ui text container">
+    <h1 class="ui header">Login</h1>
+    <div class="ui one column grid">
+        <div class="column">
+            <div class="ui message">
+                <h4 class="ui header">Welcome to private search beta! Nice to meet you again!</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ui text container">
+    <form class="ui form" method="post" action="">
+        <div class="field">
+            <label>Login</label>
+            <input type="text" required name="username" placeholder="user">
+        </div>
+        <div class="field">
+            <label>Password</label>
+            <input type="password" required name="password" placeholder="">
+        </div>
+        <button class="ui button" type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}
+

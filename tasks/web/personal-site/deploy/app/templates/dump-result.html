@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Report-result{% endblock %}
+{% block main %}
+    <h3>Report status:
+        {% if ready %}
+            READY
+        {% else %}
+            NOT READY (pls update the page)
+        {% endif %}
+    </h3>
+
+    {% if ready %}
+        Admin reply: {{ result }}
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,14 @@
++0x00: <header> 
++0x04: <entries cnt>
++0x08: <start-off>
++0x0c: <size>
++0x10: <crc32>
++0x14: <AES-decryption key>
++0x24: <next-entry>
+
+entry {
+    unsigned int start_off;
+    unsigned int size;
+    unsigned int crc32;
+    unsigned char AESkey[16];
+}

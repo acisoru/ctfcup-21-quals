@@ -1,0 +1,10 @@
+{
+  "require": {
+    "slim/twig-view": "^3.2",
+    "slim/psr7": "^1.5",
+    "smi2/phpclickhouse": "^1.4",
+    "meilisearch/meilisearch-php": "^0.19.2",
+    "guzzlehttp/guzzle": "^7.4",
+    "http-interop/http-factory-guzzle": "^1.0"
+  }
+}

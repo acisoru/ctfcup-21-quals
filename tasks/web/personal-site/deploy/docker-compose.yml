@@ -1,0 +1,45 @@
+version: '2.4'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: app.Dockerfile
+    env_file:
+      - config.env
+    depends_on:
+      - celery
+    ports:
+      - "3305:5321"
+    # For local testing.
+    cpus: 1
+    pids_limit: 256
+    mem_limit: 512m
+    restart: unless-stopped
+
+
+  celery:
+    build:
+      context: .
+      dockerfile: app.Dockerfile
+    env_file:
+      - config.env
+    depends_on:
+      - redis
+      - chrome
+    entrypoint: "celery -A app.celery worker --time-limit 6"
+    pids_limit: 1024
+    mem_limit: 1024m
+    cpus: 2
+    restart: unless-stopped
+
+  chrome:
+    build:
+      context: .
+      dockerfile: chrome.Dockerfile
+    pids_limit: 2048
+    mem_limit: 1024m
+    cpus: 2
+
+  redis:
+    image: redis:alpine
+    restart: unless-stopped

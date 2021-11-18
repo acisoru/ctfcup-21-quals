@@ -1,0 +1,13 @@
+k1  = dfc33ec22e40ce24e82bc4ac1f5aae42a43ddf3dd708cbda5fa6
+k2  = k3 xor k1
+k3  = k12 - k4
+k4  = 2bdeccba2e30a8ecefacfa4e2cd2afdf7fdc6afcd6571a22d9c1
+k5  = k1 xor k11 xor k12
+k6  = k1 xor k3 xor k5 xor k7 xor k9 xor k11
+k7  = k4 xor k1 xor k12
+k8  = k1 xor k12 xor k9 xor k11 xor k7
+k9  = k7 xor k12
+k10 = 3d1fac0ed24ca9f2f71edecaafd4e5d833ad382f71ed8e4aa5f8
+k11 = k12 xor k1 xor k7
+k12 = aaa4fb5a5cde075be334dc9e0ab8ea7eb0fb067a4a7c57e9d4c9
+flag = 'CUP{...}' xor k1 xor k2 xor k3 xor k4 xor k5 xor k6 xor k7 xor k8 xor k9 xor k10 xor k11 xor k12

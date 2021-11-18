@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+    <meta chaset='utf-8'>
+    <title>Info site - {% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" nonce="{{ g.nonce }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}" nonce="{{ g.nonce }}">
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}" nonce="{{ g.nonce }}"></script>
+
+</head>
+<body>
+<header>
+    <nav class='navbar navbar-expand-lg navbar-dark'>
+
+        <ul class='navbar-nav mr-auto pl-3'>
+            {% if auth %}
+                <li class='nav-item'>
+                    <a class='nav-link' href='/info'>My info</a>
+                </li>
+
+            {% endif %}
+        </ul>
+
+        <ul class='navbar-nav'>
+            {% if auth %}
+                <li class='nav-item'>
+                    <a class='nav-link' href='/logout'>Logout ({{ user[1] }}, id: {{ user[0] }})</a>
+                </li>
+            {% else %}
+                <li class='nav-item'>
+                    <a class='nav-link' href='/login'>Login</a>
+                </li>
+                <li class='nav-item'>
+                    <a class='nav-link' href='/register'>Register</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <div class='container m-5'>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    {% if category == 'message' %}
+                        <p class='bg-info rounded p-2'>{{ message }}</p>
+                    {% else %}
+                        <p class='bg-danger rounded p-2'>{{ message }}</p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block main %}{% endblock %}
+    </div>
+</main>
+
+<footer>
+
+</footer>
+</body>
+</html>

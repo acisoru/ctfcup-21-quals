@@ -1,0 +1,10 @@
+version: '2.4'
+services:
+  padding:
+    build: .
+    ports:
+     - "1537:1537"
+    pids_limit: 256
+    mem_limit: 512m
+    cpus: 0.5
+    restart: always

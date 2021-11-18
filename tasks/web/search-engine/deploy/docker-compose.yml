@@ -1,0 +1,51 @@
+version: '2.4'
+services:
+  melisearch:
+    image: getmeili/meilisearch
+    restart: on-failure
+    mem_limit: 512m
+    pids_limit: 1024
+    cpus: 1
+    networks:
+      - private-search
+  chouse:
+    image: yandex/clickhouse-server
+    restart: on-failure
+    mem_limit: 512m
+    pids_limit: 1024
+    cpus: 1
+    networks:
+      - private-search
+  backend:
+    build: web
+    depends_on:
+      - chouse
+      - melisearch
+    environment:
+      - ADMIN_PASSWORD=reallylongpasswordbecauseitshouldntbeguessed
+      - FLAG=CUP{s2b382s0cb9a7cr2d670b8f94s58q8el8binje17}
+    restart: on-failure
+    mem_limit: 256m
+    pids_limit: 1024
+    cpus: 1
+    networks:
+      - private-search
+  nginx:
+    image: nginx:1.18.0-alpine
+    restart: on-failure
+    ports:
+      - "3355:80"
+    volumes:
+      - ./nginx/app.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/proxy_params:/etc/nginx/proxy_params
+    mem_limit: 256m
+    pids_limit: 1024
+    cpus: 1
+    networks:
+      - private-search
+volumes:
+  msdata:
+  chdata:
+
+networks:
+  private-search:
