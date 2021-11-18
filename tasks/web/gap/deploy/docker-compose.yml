@@ -9,7 +9,6 @@ services:
 
   db:
     build: ./db
-    container_name: db
     restart: always
     environment:
       - discovery.type=single-node

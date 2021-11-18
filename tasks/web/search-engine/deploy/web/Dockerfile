@@ -12,6 +12,9 @@ RUN composer install
 
 COPY public /var/www/html/
 
+
+RUN chmod -R 777 /var/www/html
+
 RUN a2enmod rewrite
 
 COPY entry.sh /entry.sh

