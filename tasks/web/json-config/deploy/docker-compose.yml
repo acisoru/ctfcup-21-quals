@@ -36,6 +36,8 @@ services:
 
   redis:
     image: redis:alpine
+    mem_limit: 256m
+    cpus: 0.5
     networks:
       - json-config
 
