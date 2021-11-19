@@ -5,6 +5,7 @@ import sys
 import subprocess
 import requests
 import time
+import shutil
 
 from hashlib import sha256
 from binascii import unhexlify, hexlify
@@ -53,7 +54,7 @@ def sorted_ls(path):
 def remove_old_dirs():
     files = sorted_ls("/tmp/")
     for i in files:
-        os.rmdir("/tmp/" + i)
+        shutil.rmtree(i, ignore_errors=True)
 
 def main():
     # generate POW
