@@ -27,8 +27,6 @@ services:
       nofile:
         soft: 65536 # maximum number of open files for the Elasticsearch user, set to at least 65536 on modern systems
         hard: 65536
-    ports:
-      - 9200
 
   initializer:
     build: ./initializer
