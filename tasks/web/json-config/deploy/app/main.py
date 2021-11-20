@@ -92,7 +92,7 @@ def get_api_settings(domain, setting_name):
 
 @app.get('/dump/result/<string:tid>')
 def get_dump_result(tid):
-    res = AsyncResult(tid)
+    res = celery.AsyncResult(tid)
     ctx = {'ready': False}
     if res.ready():
         ctx['ready'] = True

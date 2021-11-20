@@ -11,4 +11,4 @@ RUN pip3 install -r requirements.txt
 COPY app .
 
 
-CMD gunicorn main:app --bind 0.0.0.0:5321 --workers 3
+CMD gunicorn main:app --bind 0.0.0.0:5321 --worker-class gevent --worker-connections 256
