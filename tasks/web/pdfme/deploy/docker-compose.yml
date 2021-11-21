@@ -9,7 +9,7 @@ services:
     networks:
       - pdfer
     ports:
-    - "${SERVICE_PORT:-3334}:3333"
+    - "3377:3333"
     pids_limit: 256
     mem_limit: 512m
     cpus: 0.5
