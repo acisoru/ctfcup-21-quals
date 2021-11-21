@@ -6,6 +6,8 @@
 
 [CTF-Time](https://ctftime.org/event/1479)
 
+Партнерами соревнований выступили компании **Сбер** и **МТС**.
+
 ## Задания
 
 | Таск                                                                                     | Категория | Баллы | Кол-во решений | Автор |
@@ -49,6 +51,8 @@
 [Полный список](scoreboard/full.png)
 
 ## Инфраструктура
+
+Инфраструктура была предоставлена компанией [Service pipe](https://www.servicepipe.ru/).
 
 - DevOps: [@Rubikoid](https://github.com/@Rubikoid)
 - Checksystem: [yatb](https://github.com/kksctf/yatb)
