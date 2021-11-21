@@ -38,7 +38,7 @@
 | [Script Kiddie Attack](tasks/forensics/script-kiddie-attack/README.md)                   | forensics | 1000  | 0              | @thelothric |
 | [Сервер подписи fixed](tasks/crypto/signature_server/README.md)                  | crypto    | 833   | 3              | @irina_otrada |
 | [Сервер подписи](tasks/crypto/signature_server/README.md)                                  | crypto    | 500   | 11             | @irina_otrada | 
-| [Операция "Фактор"](tasks/crypto/elliptic_curva/README.md)                            | crypto    | 417   | 15             | @greg0r0 |
+| [Операция "Фактор"](tasks/crypto/elliptic_curva)                            | crypto    | 417   | 15             | @greg0r0 |
 | [x ^= y; y ^= x; x ^= y](tasks/crypto/xored/README.md)                  | crypto    | 127   | 70             | @greg0r0 |
 | [Padding fixed](tasks/crypto/padding/README.md)                                | crypto    | 244   | 32             | @irina_otrada | 
 | [Padding](tasks/crypto/padding/README.md)                                                | crypto    | 238   | 33             | @irina_otrada |
