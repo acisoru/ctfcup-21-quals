@@ -32,10 +32,12 @@ IP:PORT
 4. db:9200/smth_interesting/_search?pretty=true&q=*:* HTTP/1.1\nAuthorization: Basic Y3RmY3VwOmN0ZmN1cA
 5. Сдаем флаг
 
+[exploit](solution/exploit.py)
+
 ## Альтернативное решение
 Вместо CRLF, можно было сделать редирект со своего домена до ctfcup:ctfcup@db:9200.
 
-[exploit](solution/exploit.py)
+
 
 # Флаг
 CUP{b061ac18135f641c21f8f429efe4d1a47d7acc37}
